@@ -7,16 +7,31 @@
     <title>Guess My Number!</title>
 </head>
 <body>
-    <header class="block container-header">
-
+    <header class="container-header">
+        <button class="button">Again</button>
+        <span class="rules">(Between 1 and 20)</span>
     </header>
 
-    <section class="output block">
-
+    <section class="output">
+        <h1 class="header-primary">Guess My Number!</h1>
+        <div class="line">
+        </div>
+        <div class="num">?</div>
     </section>
 
-    <section class="interface block container-interface">
+    <section class="interface container-interface">
+        <div class="left">
+            <input type="number" class="guess" />
+            <button class="guess-btn button ">Check</button>
+        </div>
 
+        <div class="right">
+            <p class="message">Start guessing...</p>
+            <p class="label-score">💯 Score: <span class="score">20</span></p>
+            <p class="label-highscore">
+                🥇 HighScore: <span class="highscore">0</span>
+            </p>
+        </div>
     </section>
 </body>
 </html>
