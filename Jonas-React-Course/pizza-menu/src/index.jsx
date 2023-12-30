@@ -67,27 +67,37 @@ function Header() {
 }
 
 function Menu() {
+  const pizzas = pizzaData;
+  // const pizzas = [];
+  const numPizzas = pizzas.length;
     return (
       <main className='menu'>
         <h2>Our menu</h2>
-        <ul className='pizzas'>
         {
-          pizzaData.map((pizza) => (
-            <Pizza pizzaObj={pizza} key={pizza.name}/>
-          ))
+          numPizzas > 0 ? (
+            <ul className='pizzas'>
+              {
+                pizzaData.map((pizza) => (
+                  <Pizza pizzaObj={pizza} key={pizza.name}/>
+                ))
+              }
+            </ul>
+          ) : <p>We're still getting ready...</p>
         }
-        </ul>
       </main>
     )
 }
 
-function Pizza(props) {
+function Pizza({pizzaObj}) {
+  if (pizzaObj.soldOut) return null;
   return (
       <li className='pizza'>
-          <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
-          <h3>{props.pizzaObj.name}</h3>
-          <p>{props.pizzaObj.ingredients}</p>
-          <span>{props.pizzaObj.price}</span>
+          <img src={pizzaObj.photoName} alt={pizzaObj.name} />
+          <div>
+            <h3>{pizzaObj.name}</h3>
+            <p>{pizzaObj.ingredients}</p>
+            <span>{pizzaObj.price}</span>
+          </div>
       </li>
   )
 }
@@ -98,10 +108,30 @@ function Footer() {
     const closeHour = 22;
     const isOpen = hour >= openHour && hour <= closeHour;
     console.log(isOpen);
-    return (<footer className='footer'>{new Date().toLocaleTimeString()}</footer>)
+
+
+    return (
+    <footer className='footer'>
+      {
+        isOpen ? (
+          <Order closeHour={closeHour} openHour={openHour}/>
+        ) : <p>We're happy to welcome you between {openHour}:00 and {closeHour}:00</p>
+      }
+    </footer>
+    )
     // return React.createElement('footer', null, "We're currently open!");
 }
 
+function Order({closeHour, openHour}) {
+  return (
+    <div className="order">
+      <p>
+        We're open from {openHour}:00 to {closeHour}:00. Come visit us or order online.
+      </p>
+      <button className='btn'>Order</button>
+    </div>
+  )
+}
 
 
 // React V18
