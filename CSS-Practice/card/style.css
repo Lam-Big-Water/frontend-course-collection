@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,900;1,100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Orbitron", sans-serif;
+  color: #fff;
+  overflow: hidden;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #212121;
+}
+section .card {
+  width: 50rem;
+  padding: 3rem;
+  background: #333;
+  border-radius: 15px;
+}
+section .card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+section .card header .info {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+section .card header .name {
+  font-size: 2.6rem;
+  font-style: italic;
+}
+section .card .detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  gap: 8px;
+}
+section .card .detail .chip {
+  margin-left: -1.1rem;
+  height: 8rem;
+}
+section .card .detail h1 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+}
+section .card .detail .valid {
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+section .card .detail .valid i {
+  padding-left: 1rem;
+}
+section .card .detail h2 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+}/*# sourceMappingURL=style.css.map */
