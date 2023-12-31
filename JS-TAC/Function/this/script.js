@@ -64,7 +64,7 @@ const obj = {
         var anotherFunc = function() {
             console.log('b ' + this);
         }
-        anotherFunc()
+        return anotherFunc.bind(this)
     }
 }
 /*
