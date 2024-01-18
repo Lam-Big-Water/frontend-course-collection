@@ -133,3 +133,107 @@ class Elf {
 const sam = new Elf('Sam', 'Fire')
 console.log(sam instanceof Elf);
 console.log(sam.attack());
+
+// new binding this
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+const person1 = new Person('Sam', 55);
+console.log(person1);
+
+// implicit binding
+// * The `this` keyword will refer to the person that's implicit binding.
+const person = {
+    name: 'Karen',
+    age: 40,
+    hi() {
+        console.log(this.name + this.age);
+    }
+}
+
+// explicit binding
+// const person3 = {
+//     name: 'Karen',
+//     age: 40,
+//     hi: function() {
+//         console.log('hi!' + this.setTimeout)
+//     }.bind(window)
+// }
+// hi!function setTimeout() { [native code] }
+// console.log(person3.hi())
+
+// arrow function
+const person4 = {
+    name: 'Karen',
+    age: 40,
+    hi: function() {
+        var inner = () => {
+            console.log('I am ' + this.name)
+        }
+        return inner()
+    }
+}
+person4.hi()
+
+// Inheritance
+class Elf2 {
+    constructor(name, weapon) {
+        this.name = name;
+        this.weapon = weapon;
+    }
+    attack() {
+        return 'attack with ' + this.weapon
+    }
+}
+const fiona = new Elf2('Fiona', 'ninja stars');
+const ogre = {...fiona};
+console.log(ogre.__proto__);
+// * So I've cloned the object, but Ogre no longer has Elf2 as the class
+console.log(fiona.__proto__);
+// * false, these object are not referencing the same place in memory, there are completely different
+console.log(fiona === ogre);
+
+// extends + super => It simply links up the prototype chain
+class Character {
+    constructor(name, weapon) {
+        this.name = name;
+        this.weapon = weapon;
+    }
+    attack() {
+        return 'attack with ' + this.weapon
+    }
+}
+class Users extends Character {
+    constructor(name, weapon, type) {
+        // Call the super class => Character
+        super(name, weapon);
+        console.log(this);
+        this.type = type;
+    }
+    attack(word) {
+        return 'BOOM!!' + word
+    }
+}
+
+class Ogre extends Character {
+    constructor(name, weapon, color) {
+        super(name, weapon);
+        this.color = color;
+    }
+    makeFort() {
+        return 'Strong fort in the world made';
+    }
+}
+
+const SamLam = new Users('SamLam', 'GM', 'man');
+console.log(SamLam)
+console.log(SamLam.attack('You are diet man'))
+const shrek = new Ogre('Shrek', 'club', 'green');
+console.log(shrek);
+console.log(shrek.makeFort());
+// * It extends all the way up
+console.log(shrek instanceof Users);
+console.log(shrek instanceof Ogre);
+console.log(shrek instanceof Character);
