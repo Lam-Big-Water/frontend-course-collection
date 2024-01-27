@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module</title>
+</head>
+<body>
+    <script src="./script.js"></script>
+    <script>
+        var fight = 'close';
+        var globalSecret = 'Oh';
+    </script>
+    <script>
+        var script2 = (function(globalSecret) {
+            fight = 'open';
+            globalSecret = 'Mind';
+        })(globalSecret)
+    </script>
+</body>
+</html>
