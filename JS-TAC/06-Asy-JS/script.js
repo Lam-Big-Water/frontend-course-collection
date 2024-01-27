@@ -152,33 +152,39 @@ const urls = [
 
 // Exercise
 // 3 point => 1.parallel, 2.sequencies, 3.race
-const promisify = (item, delay) =>
-    new Promise((resolve) =>
-        setTimeout(() => 
-            resolve(item), delay));
-const a = () => promisify('a', 100);
-const b = () => promisify('b', 1000);
-const c = () => promisify('c', 2000);
+// const promisify = (item, delay) =>
+//     new Promise((resolve) =>
+//         setTimeout(() => 
+//             resolve(item), delay));
+// const a = () => promisify('a', 100);
+// const b = () => promisify('b', 1000);
+// const c = () => promisify('c', 2000);
 
-async function parallel() {
-    const promises = [a(), b(), c()];
-    const [output1, output2, output3] = await Promise.all(promises);
-    return `parallel is done: ${output1} ${output2} ${output3}`
-}
-parallel().then(console.log)
+// async function parallel() {
+//     const promises = [a(), b(), c()];
+//     const [output1, output2, output3] = await Promise.all(promises);
+//     return `parallel is done: ${output1} ${output2} ${output3}`
+// }
+// parallel().then(console.log)
 
 
-async function race() {
-    const promises = [a(), b(), c()];
-    const winner = await Promise.race(promises);
-    return `the winner is ${winner}`
-}
-race().then(console.log)
+// async function race() {
+//     const promises = [a(), b(), c()];
+//     const winner = await Promise.race(promises);
+//     return `the winner is ${winner}`
+// }
+// race().then(console.log)
 
-async function sequencies() {
-    const one = await c();
-    const two = await a();
-    const three = await b();
-    return `parallel is done: ${one} ${two} ${three}`
-}
-sequencies().then(console.log)
+// async function sequencies() {
+//     const one = await c();
+//     const two = await a();
+//     const three = await b();
+//     return `parallel is done: ${one} ${two} ${three}`
+// }
+// sequencies().then(console.log)
+
+const promiseOne = new Promise((resolve, _) => setTimeout(resolve, 3000));
+const promiseTwo = new Promise((_, reject) => setTimeout(reject, 2000));
+
+Promise.allSettled([promiseOne, promiseTwo]).then(data => console.log(data))
+    .catch(e => console.log('something is wrong', e));
