@@ -16,7 +16,7 @@
 
 // Media Queries Manager
 
-
+// Order: base + typography > general layout + grid > page layout > components
 
 @mixin respond($breakpoint) {
     @if $breakpoint == phone {

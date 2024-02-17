@@ -26,4 +26,9 @@ html {
 /* Inheritance Style */
 body {
     box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port) {
+        padding: 0;
+    }
 }
